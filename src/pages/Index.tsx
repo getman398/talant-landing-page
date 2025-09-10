@@ -1,11 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import Icon from "@/components/ui/icon";
+import { useState } from "react";
 
 const Index = () => {
+  const [formData, setFormData] = useState({ name: '', phone: '' });
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+  };
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // В будущем здесь будет отправка в MySQL
+    console.log('Данные формы:', formData);
+    alert(`Спасибо, ${formData.name}! Мы свяжемся с вами по телефону ${formData.phone}`);
+    setFormData({ name: '', phone: '' });
+    setIsDialogOpen(false);
   };
 
   return (
@@ -15,10 +31,43 @@ const Index = () => {
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-slate-800">КА ТАЛАНТ</h1>
-            <Button className="bg-primary hover:bg-primary/90">
-              <Icon name="Phone" className="mr-2 h-4 w-4" />
-              Заказать звонок
-            </Button>
+            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+              <DialogTrigger asChild>
+                <Button className="bg-primary hover:bg-primary/90">
+                  <Icon name="Phone" className="mr-2 h-4 w-4" />
+                  Заказать звонок
+                </Button>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Заказать звонок</DialogTitle>
+                </DialogHeader>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <Label htmlFor="name">Имя</Label>
+                    <Input
+                      id="name"
+                      value={formData.name}
+                      onChange={(e) => setFormData({...formData, name: e.target.value})}
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="phone">Телефон</Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                    Отправить заявку
+                  </Button>
+                </form>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </header>
@@ -68,14 +117,51 @@ const Index = () => {
                 Современные технологии, аналитика и основы психологии для качественного подбора кадров
               </p>
               <div className="flex gap-4">
-                <Button size="lg" className="bg-primary hover:bg-primary/90">
-                  <Icon name="Users" className="mr-2 h-5 w-5" />
-                  Найти сотрудника
-                </Button>
-                <Button size="lg" variant="outline">
-                  <Icon name="Briefcase" className="mr-2 h-5 w-5" />
-                  Найти работу
-                </Button>
+                <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button size="lg" className="bg-primary hover:bg-primary/90">
+                      <Icon name="Users" className="mr-2 h-5 w-5" />
+                      Найти сотрудника
+                    </Button>
+                  </DialogTrigger>
+                </Dialog>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button size="lg" variant="outline">
+                      <Icon name="Briefcase" className="mr-2 h-5 w-5" />
+                      Найти работу
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Найти работу</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="name2">Имя</Label>
+                        <Input
+                          id="name2"
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone2">Телефон</Label>
+                        <Input
+                          id="phone2"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        Отправить заявку
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
               </div>
             </div>
             <div className="lg:order-first">
@@ -151,50 +237,274 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Services Section - Тарифы */}
       <section id="services" className="py-16">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">Наши услуги</h2>
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">Тарифы</h2>
             <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
             <p className="text-slate-600 max-w-2xl mx-auto">
-              Комплексные решения для бизнеса и соискателей
+              Выберите подходящий тариф для подбора персонала
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="p-0 text-center">
+            {/* Базовый */}
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2">
+              <CardContent className="p-0">
+                <div className="text-center mb-6">
+                  <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Package" className="h-8 w-8 text-blue-600" />
+                  </div>
+                  <h3 className="font-bold text-xl text-slate-800 mb-2">Базовый</h3>
+                  <div className="text-3xl font-bold text-primary mb-4">10 000 ₽</div>
+                </div>
+                <ul className="space-y-3 text-sm text-slate-600 mb-6">
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Настройка эффективных объявлений на job-порталах
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Разработка стратегии поиска персонала
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Базовая автоматизация откликов
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Поиск кандидатов и сортировка резюме
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Выбор наиболее подходящих кандидатов
+                  </li>
+                </ul>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700">
+                      Выбрать тариф
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Заказать тариф "Базовый"</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="name3">Имя</Label>
+                        <Input
+                          id="name3"
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone3">Телефон</Label>
+                        <Input
+                          id="phone3"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        Отправить заявку
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </CardContent>
+            </Card>
+
+            {/* Стандарт Плюс */}
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">Популярный</span>
+              </div>
+              <CardContent className="p-0">
+                <div className="text-center mb-6">
+                  <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Star" className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="font-bold text-xl text-slate-800 mb-2">Стандарт Плюс</h3>
+                  <div className="text-3xl font-bold text-primary mb-4">50 000 ₽</div>
+                </div>
+                <ul className="space-y-3 text-sm text-slate-600 mb-6">
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Все услуги тарифа "Базовый"
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Первичное интервью с профессиональным HR
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Список лучших кандидатов
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Гарантия замены в течение месяца
+                  </li>
+                </ul>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="w-full bg-primary hover:bg-primary/90">
+                      Выбрать тариф
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Заказать тариф "Стандарт Плюс"</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="name4">Имя</Label>
+                        <Input
+                          id="name4"
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone4">Телефон</Label>
+                        <Input
+                          id="phone4"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        Отправить заявку
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </CardContent>
+            </Card>
+
+            {/* Премиум */}
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2">
+              <CardContent className="p-0">
+                <div className="text-center mb-6">
+                  <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Crown" className="h-8 w-8 text-purple-600" />
+                  </div>
+                  <h3 className="font-bold text-xl text-slate-800 mb-2">Премиум</h3>
+                  <div className="text-3xl font-bold text-primary mb-4">150 000 ₽</div>
+                </div>
+                <ul className="space-y-3 text-sm text-slate-600 mb-6">
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Все услуги тарифа "Стандарт Плюс"
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Оценка компетенций кандидата
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Психологический портрет сотрудника
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Определение совместимости с командой
+                  </li>
+                  <li className="flex items-start">
+                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    Советы по адаптации в коллективе
+                  </li>
+                </ul>
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <Button className="w-full bg-purple-600 hover:bg-purple-700">
+                      Выбрать тариф
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogHeader>
+                      <DialogTitle>Заказать тариф "Премиум"</DialogTitle>
+                    </DialogHeader>
+                    <form onSubmit={handleSubmit} className="space-y-4">
+                      <div>
+                        <Label htmlFor="name5">Имя</Label>
+                        <Input
+                          id="name5"
+                          value={formData.name}
+                          onChange={(e) => setFormData({...formData, name: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <div>
+                        <Label htmlFor="phone5">Телефон</Label>
+                        <Input
+                          id="phone5"
+                          type="tel"
+                          value={formData.phone}
+                          onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                          required
+                        />
+                      </div>
+                      <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                        Отправить заявку
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Преимущества работы с нами */}
+      <section className="py-16 bg-slate-50">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-slate-800 mb-4">Что вы получаете, работая с нами?</h2>
+            <div className="w-20 h-1 bg-primary mx-auto"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            <Card className="p-6 text-center">
+              <CardContent className="p-0">
                 <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Search" className="h-8 w-8 text-blue-600" />
+                  <Icon name="Clock" className="h-8 w-8 text-blue-600" />
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-2">Подбор персонала</h3>
+                <h3 className="font-semibold text-slate-800 mb-3">1) Оперативность</h3>
                 <p className="text-slate-600 text-sm">
-                  Поиск и подбор квалифицированных специалистов под ваши требования
+                  Вы получите людей в соответствии со своим запросом настолько быстро, насколько это возможно
                 </p>
               </CardContent>
             </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="p-0 text-center">
+            
+            <Card className="p-6 text-center">
+              <CardContent className="p-0">
                 <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="UserCheck" className="h-8 w-8 text-green-600" />
+                  <Icon name="Award" className="h-8 w-8 text-green-600" />
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-2">Аутстаффинг</h3>
+                <h3 className="font-semibold text-slate-800 mb-3">2) Профессионализм</h3>
                 <p className="text-slate-600 text-sm">
-                  Оформление сотрудников как ИП на НПД для экономии ваших расходов
+                  Наша задача - не только подобрать сотрудников, но и тщательно оценить компетенции и личностные качества
                 </p>
               </CardContent>
             </Card>
-
-            <Card className="p-6 hover:shadow-lg transition-shadow">
-              <CardContent className="p-0 text-center">
+            
+            <Card className="p-6 text-center">
+              <CardContent className="p-0">
                 <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="BarChart" className="h-8 w-8 text-purple-600" />
+                  <Icon name="Brain" className="h-8 w-8 text-purple-600" />
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-2">HR-консалтинг</h3>
+                <h3 className="font-semibold text-slate-800 mb-3">3) Современный подход</h3>
                 <p className="text-slate-600 text-sm">
-                  Консультации по оптимизации HR-процессов в вашей компании
+                  Мы используем AI-инструменты, основы психологии и аналитику для углубленной работы с кандидатами
                 </p>
               </CardContent>
             </Card>
@@ -203,7 +513,7 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 bg-slate-50">
+      <section id="faq" className="py-16">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
@@ -214,38 +524,28 @@ const Index = () => {
             <Accordion type="single" collapsible className="space-y-4">
               <AccordionItem value="item-1" className="bg-white rounded-lg border">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                  Как быстро вы подбираете персонал?
+                  Почему вы берете деньги только за результат?
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4 text-slate-600">
-                  Средний срок подбора персонала составляет 5-10 рабочих дней, в зависимости от сложности позиции и требований.
+                  Мы уверены в своих возможностях, и считаем, что наши клиенты должны платить только за качественно оказанную услугу.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-2" className="bg-white rounded-lg border">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                  Что такое ИП на НПД и какие преимущества?
+                  Что будет если кандидат не подойдет?
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4 text-slate-600">
-                  ИП на НПД (налог на профессиональный доход) - это льготная система налогообложения. 
-                  Работодатель экономит на налогах и взносах, а сотрудник получает на руки больше.
+                  Мы предлагаем вам возможность не просто получить кандидата на интересующую вакансию, а заменить его в течение месяца, если он вам не подходит.
                 </AccordionContent>
               </AccordionItem>
 
               <AccordionItem value="item-3" className="bg-white rounded-lg border">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                  Какие гарантии вы предоставляете?
+                  На какие специальности вы находите людей?
                 </AccordionTrigger>
                 <AccordionContent className="px-6 pb-4 text-slate-600">
-                  Мы предоставляем гарантию замены сотрудника в течение 3 месяцев, если он не прошел испытательный срок.
-                </AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4" className="bg-white rounded-lg border">
-                <AccordionTrigger className="px-6 py-4 hover:no-underline">
-                  Сколько стоят ваши услуги?
-                </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-slate-600">
-                  Стоимость услуг зависит от сложности позиции и составляет от 50% до 100% месячной зарплаты найденного специалиста.
+                  Разные. Это могут быть профессионалы из строительной отрасли, сферы создания контента, дизайна, общепита или офисных специальностей. Все индивидуально, и мы рассматриваем любые заказы.
                 </AccordionContent>
               </AccordionItem>
             </Accordion>
@@ -254,7 +554,7 @@ const Index = () => {
       </section>
 
       {/* Contacts Section */}
-      <section id="contacts" className="py-16">
+      <section id="contacts" className="py-16 bg-slate-50">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -262,14 +562,14 @@ const Index = () => {
               <div className="w-20 h-1 bg-primary mx-auto"></div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               <Card className="p-6 text-center">
                 <CardContent className="p-0">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name="Phone" className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-800 mb-2">Телефон</h3>
-                  <p className="text-slate-600">+7 (495) 123-45-67</p>
+                  <p className="text-slate-600 text-sm">+79011573066</p>
                 </CardContent>
               </Card>
 
@@ -279,7 +579,7 @@ const Index = () => {
                     <Icon name="Mail" className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-800 mb-2">Email</h3>
-                  <p className="text-slate-600">info@talent-ka.ru</p>
+                  <p className="text-slate-600 text-sm">info@ka-talant.ru</p>
                 </CardContent>
               </Card>
 
@@ -289,16 +589,59 @@ const Index = () => {
                     <Icon name="MapPin" className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-slate-800 mb-2">Адрес</h3>
-                  <p className="text-slate-600">г. Москва, ул. Деловая, д. 1</p>
+                  <p className="text-slate-600 text-sm">г. Москва, ул. Ленина 10 оф. 32</p>
+                </CardContent>
+              </Card>
+
+              <Card className="p-6 text-center">
+                <CardContent className="p-0">
+                  <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Building2" className="h-6 w-6 text-primary" />
+                  </div>
+                  <h3 className="font-semibold text-slate-800 mb-2">ИНН</h3>
+                  <p className="text-slate-600 text-sm">1800039295</p>
                 </CardContent>
               </Card>
             </div>
 
             <div className="mt-12 text-center">
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                <Icon name="MessageCircle" className="mr-2 h-5 w-5" />
-                Написать нам
-              </Button>
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="bg-primary hover:bg-primary/90">
+                    <Icon name="MessageCircle" className="mr-2 h-5 w-5" />
+                    Написать нам
+                  </Button>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                    <DialogTitle>Написать нам</DialogTitle>
+                  </DialogHeader>
+                  <form onSubmit={handleSubmit} className="space-y-4">
+                    <div>
+                      <Label htmlFor="name6">Имя</Label>
+                      <Input
+                        id="name6"
+                        value={formData.name}
+                        onChange={(e) => setFormData({...formData, name: e.target.value})}
+                        required
+                      />
+                    </div>
+                    <div>
+                      <Label htmlFor="phone6">Телефон</Label>
+                      <Input
+                        id="phone6"
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                        required
+                      />
+                    </div>
+                    <Button type="submit" className="w-full bg-primary hover:bg-primary/90">
+                      Отправить заявку
+                    </Button>
+                  </form>
+                </DialogContent>
+              </Dialog>
             </div>
           </div>
         </div>
@@ -308,15 +651,15 @@ const Index = () => {
       <footer className="bg-slate-800 text-white py-12">
         <div className="container mx-auto px-6">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">КА ТАЛАНТ</h3>
+            <h3 className="text-2xl font-bold mb-4">ООО "КАДРОВОЕ АГЕНТСТВО ТАЛАНТ"</h3>
             <p className="text-slate-300 mb-6">
               Профессиональный подбор персонала с использованием современных технологий
             </p>
             <div className="flex justify-center space-x-6">
-              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+              <a href="tel:+79011573066" className="text-slate-300 hover:text-white transition-colors">
                 <Icon name="Phone" className="h-5 w-5" />
               </a>
-              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+              <a href="mailto:info@ka-talant.ru" className="text-slate-300 hover:text-white transition-colors">
                 <Icon name="Mail" className="h-5 w-5" />
               </a>
               <a href="#" className="text-slate-300 hover:text-white transition-colors">
