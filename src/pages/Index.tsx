@@ -25,12 +25,12 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <div className="min-h-screen bg-background">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b">
+      <header className="bg-card shadow-sm border-b border-border">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl font-bold text-slate-800">КА ТАЛАНТ</h1>
+            <h1 className="text-2xl font-bold text-foreground">КА ДРИМ</h1>
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
               <DialogTrigger asChild>
                 <Button className="bg-primary hover:bg-primary/90">
@@ -73,30 +73,30 @@ const Index = () => {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-white border-b">
+      <nav className="bg-card border-b border-border">
         <div className="container mx-auto px-6">
           <div className="flex space-x-8 py-4">
             <button 
               onClick={() => scrollToSection('about')}
-              className="text-slate-600 hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               О нас
             </button>
             <button 
               onClick={() => scrollToSection('services')}
-              className="text-slate-600 hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               Услуги
             </button>
             <button 
               onClick={() => scrollToSection('contacts')}
-              className="text-slate-600 hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               Контакты
             </button>
             <button 
               onClick={() => scrollToSection('faq')}
-              className="text-slate-600 hover:text-primary transition-colors"
+              className="text-muted-foreground hover:text-primary transition-colors"
             >
               Часто задаваемые вопросы
             </button>
@@ -109,11 +109,11 @@ const Index = () => {
         <div className="container mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-6">
-              <h2 className="text-4xl lg:text-5xl font-bold text-slate-800 leading-tight">
+              <h2 className="text-4xl lg:text-5xl font-bold text-foreground leading-tight">
                 Быстрый подбор 
                 <span className="text-primary block">персонала</span>
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 Современные технологии, аналитика и основы психологии для качественного подбора кадров
               </p>
               <div className="flex gap-4">
@@ -166,7 +166,7 @@ const Index = () => {
             </div>
             <div className="lg:order-first">
               <img 
-                src="/img/37a7bf96-7088-4cfd-842b-50d79f6e746a.jpg" 
+                src="https://cdn.poehali.dev/projects/7cc3c9a8-90ac-412a-9ca5-568117dcdcf8/files/f88a87db-09e0-459d-8390-51ae0556f98b.jpg" 
                 alt="Профессиональная команда" 
                 className="w-full h-[400px] object-cover rounded-2xl shadow-lg"
               />
@@ -176,11 +176,11 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-16 bg-slate-50">
+      <section id="about" className="py-16 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-800 mb-4">О нас</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-4">О нас</h2>
               <div className="w-20 h-1 bg-primary mx-auto"></div>
             </div>
             
@@ -192,9 +192,9 @@ const Index = () => {
                       <Icon name="Zap" className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-2">Быстрый подбор</h3>
-                      <p className="text-slate-600 text-sm">
-                        Кадровое агентство "Талант" работает по принципу быстрого подбора кадров с использованием современных технологий, аналитики и основ психологии.
+                      <h3 className="font-semibold text-foreground mb-2">Быстрый подбор</h3>
+                      <p className="text-muted-foreground text-sm">
+                        Кадровое агентство "Дрим" работает по принципу быстрого подбора кадров с использованием современных технологий, аналитики и основ психологии.
                       </p>
                     </div>
                   </div>
@@ -208,8 +208,8 @@ const Index = () => {
                       <Icon name="Target" className="h-6 w-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-semibold text-slate-800 mb-2">Качественный результат</h3>
-                      <p className="text-slate-600 text-sm">
+                      <h3 className="font-semibold text-foreground mb-2">Качественный результат</h3>
+                      <p className="text-muted-foreground text-sm">
                         Совокупность инструментов, которые мы используем в своей работе, позволяет нам обеспечивать не только оперативный, но и качественный подбор персонала.
                       </p>
                     </div>
@@ -218,16 +218,16 @@ const Index = () => {
               </Card>
             </div>
 
-            <div className="mt-8 p-6 bg-white rounded-xl border">
+            <div className="mt-8 p-6 bg-card rounded-xl border border-border">
               <div className="flex items-start space-x-4">
-                <div className="bg-green-100 p-3 rounded-lg">
-                  <Icon name="TrendingUp" className="h-6 w-6 text-green-600" />
+                <div className="bg-green-600/20 p-3 rounded-lg">
+                  <Icon name="TrendingUp" className="h-6 w-6 text-green-400" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-slate-800 mb-2">Выгодное сотрудничество</h3>
-                  <p className="text-slate-600">
+                  <h3 className="font-semibold text-foreground mb-2">Выгодное сотрудничество</h3>
+                  <p className="text-muted-foreground">
                     Мы предлагаем нашим кандидатам наиболее выгодную на сегодняшний день форму сотрудничества - 
-                    <span className="font-semibold text-green-600"> ИП на НПД</span>, что позволяет работодателю экономить на налогах, 
+                    <span className="font-semibold text-green-400"> ИП на НПД</span>, что позволяет работодателю экономить на налогах, 
                     а работнику получать более высокую оплату за свой труд.
                   </p>
                 </div>
@@ -241,43 +241,43 @@ const Index = () => {
       <section id="services" className="py-16">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">Тарифы</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Тарифы</h2>
             <div className="w-20 h-1 bg-primary mx-auto mb-6"></div>
-            <p className="text-slate-600 max-w-2xl mx-auto">
+            <p className="text-muted-foreground max-w-2xl mx-auto">
               Выберите подходящий тариф для подбора персонала
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             {/* Базовый */}
-            <Card className="p-6 hover:shadow-lg transition-shadow border-2">
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-border bg-card">
               <CardContent className="p-0">
                 <div className="text-center mb-6">
-                  <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name="Package" className="h-8 w-8 text-blue-600" />
+                  <div className="bg-blue-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Package" className="h-8 w-8 text-blue-400" />
                   </div>
-                  <h3 className="font-bold text-xl text-slate-800 mb-2">Базовый</h3>
+                  <h3 className="font-bold text-xl text-foreground mb-2">Базовый</h3>
                   <div className="text-3xl font-bold text-primary mb-4">10 000 ₽</div>
                 </div>
-                <ul className="space-y-3 text-sm text-slate-600 mb-6">
+                <ul className="space-y-3 text-sm text-muted-foreground mb-6">
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Настройка эффективных объявлений на job-порталах
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Разработка стратегии поиска персонала
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Базовая автоматизация откликов
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Поиск кандидатов и сортировка резюме
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Выбор наиболее подходящих кандидатов
                   </li>
                 </ul>
@@ -321,33 +321,33 @@ const Index = () => {
             </Card>
 
             {/* Стандарт Плюс */}
-            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary relative">
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-primary relative bg-card">
               <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                <span className="bg-primary text-white px-4 py-1 rounded-full text-sm font-semibold">Популярный</span>
+                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">Популярный</span>
               </div>
               <CardContent className="p-0">
                 <div className="text-center mb-6">
                   <div className="bg-primary/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name="Star" className="h-8 w-8 text-primary" />
                   </div>
-                  <h3 className="font-bold text-xl text-slate-800 mb-2">Стандарт Плюс</h3>
+                  <h3 className="font-bold text-xl text-foreground mb-2">Стандарт Плюс</h3>
                   <div className="text-3xl font-bold text-primary mb-4">50 000 ₽</div>
                 </div>
-                <ul className="space-y-3 text-sm text-slate-600 mb-6">
+                <ul className="space-y-3 text-sm text-muted-foreground mb-6">
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Все услуги тарифа "Базовый"
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Первичное интервью с профессиональным HR
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Список лучших кандидатов
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Гарантия замены в течение месяца
                   </li>
                 </ul>
@@ -391,34 +391,34 @@ const Index = () => {
             </Card>
 
             {/* Премиум */}
-            <Card className="p-6 hover:shadow-lg transition-shadow border-2">
+            <Card className="p-6 hover:shadow-lg transition-shadow border-2 border-border bg-card">
               <CardContent className="p-0">
                 <div className="text-center mb-6">
-                  <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Icon name="Crown" className="h-8 w-8 text-purple-600" />
+                  <div className="bg-purple-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Icon name="Crown" className="h-8 w-8 text-purple-400" />
                   </div>
-                  <h3 className="font-bold text-xl text-slate-800 mb-2">Премиум</h3>
+                  <h3 className="font-bold text-xl text-foreground mb-2">Премиум</h3>
                   <div className="text-3xl font-bold text-primary mb-4">150 000 ₽</div>
                 </div>
-                <ul className="space-y-3 text-sm text-slate-600 mb-6">
+                <ul className="space-y-3 text-sm text-muted-foreground mb-6">
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Все услуги тарифа "Стандарт Плюс"
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Оценка компетенций кандидата
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Психологический портрет сотрудника
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Определение совместимости с командой
                   </li>
                   <li className="flex items-start">
-                    <Icon name="Check" className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                    <Icon name="Check" className="h-4 w-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" />
                     Советы по адаптации в коллективе
                   </li>
                 </ul>
@@ -465,45 +465,45 @@ const Index = () => {
       </section>
 
       {/* Преимущества работы с нами */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-slate-800 mb-4">Что вы получаете, работая с нами?</h2>
+            <h2 className="text-3xl font-bold text-foreground mb-4">Что вы получаете, работая с нами?</h2>
             <div className="w-20 h-1 bg-primary mx-auto"></div>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="p-6 text-center">
+            <Card className="p-6 text-center bg-card">
               <CardContent className="p-0">
-                <div className="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Clock" className="h-8 w-8 text-blue-600" />
+                <div className="bg-blue-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Clock" className="h-8 w-8 text-blue-400" />
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-3">1) Оперативность</h3>
-                <p className="text-slate-600 text-sm">
+                <h3 className="font-semibold text-foreground mb-3">1) Оперативность</h3>
+                <p className="text-muted-foreground text-sm">
                   Вы получите людей в соответствии со своим запросом настолько быстро, насколько это возможно
                 </p>
               </CardContent>
             </Card>
             
-            <Card className="p-6 text-center">
+            <Card className="p-6 text-center bg-card">
               <CardContent className="p-0">
-                <div className="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Award" className="h-8 w-8 text-green-600" />
+                <div className="bg-green-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Award" className="h-8 w-8 text-green-400" />
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-3">2) Профессионализм</h3>
-                <p className="text-slate-600 text-sm">
+                <h3 className="font-semibold text-foreground mb-3">2) Профессионализм</h3>
+                <p className="text-muted-foreground text-sm">
                   Наша задача - не только подобрать сотрудников, но и тщательно оценить компетенции и личностные качества
                 </p>
               </CardContent>
             </Card>
             
-            <Card className="p-6 text-center">
+            <Card className="p-6 text-center bg-card">
               <CardContent className="p-0">
-                <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Brain" className="h-8 w-8 text-purple-600" />
+                <div className="bg-purple-600/20 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Icon name="Brain" className="h-8 w-8 text-purple-400" />
                 </div>
-                <h3 className="font-semibold text-slate-800 mb-3">3) Современный подход</h3>
-                <p className="text-slate-600 text-sm">
+                <h3 className="font-semibold text-foreground mb-3">3) Современный подход</h3>
+                <p className="text-muted-foreground text-sm">
                   Мы используем AI-инструменты, основы психологии и аналитику для углубленной работы с кандидатами
                 </p>
               </CardContent>
@@ -513,38 +513,38 @@ const Index = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16">
+      <section id="faq" className="py-16 bg-background">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-800 mb-4">Часто задаваемые вопросы</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-4">Часто задаваемые вопросы</h2>
               <div className="w-20 h-1 bg-primary mx-auto"></div>
             </div>
 
             <Accordion type="single" collapsible className="space-y-4">
-              <AccordionItem value="item-1" className="bg-white rounded-lg border">
+              <AccordionItem value="item-1" className="bg-card rounded-lg border border-border">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   Почему вы берете деньги только за результат?
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-slate-600">
+                <AccordionContent className="px-6 pb-4 text-muted-foreground">
                   Мы уверены в своих возможностях, и считаем, что наши клиенты должны платить только за качественно оказанную услугу.
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-2" className="bg-white rounded-lg border">
+              <AccordionItem value="item-2" className="bg-card rounded-lg border border-border">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   Что будет если кандидат не подойдет?
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-slate-600">
+                <AccordionContent className="px-6 pb-4 text-muted-foreground">
                   Мы предлагаем вам возможность не просто получить кандидата на интересующую вакансию, а заменить его в течение месяца, если он вам не подходит.
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="item-3" className="bg-white rounded-lg border">
+              <AccordionItem value="item-3" className="bg-card rounded-lg border border-border">
                 <AccordionTrigger className="px-6 py-4 hover:no-underline">
                   На какие специальности вы находите людей?
                 </AccordionTrigger>
-                <AccordionContent className="px-6 pb-4 text-slate-600">
+                <AccordionContent className="px-6 pb-4 text-muted-foreground">
                   Разные. Это могут быть профессионалы из строительной отрасли, сферы создания контента, дизайна, общепита или офисных специальностей. Все индивидуально, и мы рассматриваем любые заказы.
                 </AccordionContent>
               </AccordionItem>
@@ -554,52 +554,52 @@ const Index = () => {
       </section>
 
       {/* Contacts Section */}
-      <section id="contacts" className="py-16 bg-slate-50">
+      <section id="contacts" className="py-16 bg-secondary">
         <div className="container mx-auto px-6">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-800 mb-4">Контакты</h2>
+              <h2 className="text-3xl font-bold text-foreground mb-4">Контакты</h2>
               <div className="w-20 h-1 bg-primary mx-auto"></div>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Card className="p-6 text-center">
+              <Card className="p-6 text-center bg-card">
                 <CardContent className="p-0">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name="Phone" className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-slate-800 mb-2">Телефон</h3>
-                  <p className="text-slate-600 text-sm">+79011573066</p>
+                  <h3 className="font-semibold text-foreground mb-2">Телефон</h3>
+                  <p className="text-muted-foreground text-sm">+79011573066</p>
                 </CardContent>
               </Card>
 
-              <Card className="p-6 text-center">
+              <Card className="p-6 text-center bg-card">
                 <CardContent className="p-0">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name="Mail" className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-slate-800 mb-2">Email</h3>
-                  <p className="text-slate-600 text-sm">info@ka-talant.ru</p>
+                  <h3 className="font-semibold text-foreground mb-2">Email</h3>
+                  <p className="text-muted-foreground text-sm">hr@ka-drem.ru</p>
                 </CardContent>
               </Card>
 
-              <Card className="p-6 text-center">
+              <Card className="p-6 text-center bg-card">
                 <CardContent className="p-0">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name="MapPin" className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-slate-800 mb-2">Адрес</h3>
-                  <p className="text-slate-600 text-sm">г. Москва, ул. Ленина 10 оф. 32</p>
+                  <h3 className="font-semibold text-foreground mb-2">Адрес</h3>
+                  <p className="text-muted-foreground text-sm">г. Москва, ул. Ленина 10 оф. 32</p>
                 </CardContent>
               </Card>
 
-              <Card className="p-6 text-center">
+              <Card className="p-6 text-center bg-card">
                 <CardContent className="p-0">
                   <div className="bg-primary/10 w-12 h-12 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Icon name="Building2" className="h-6 w-6 text-primary" />
                   </div>
-                  <h3 className="font-semibold text-slate-800 mb-2">ИНН</h3>
-                  <p className="text-slate-600 text-sm">1800039295</p>
+                  <h3 className="font-semibold text-foreground mb-2">ИНН</h3>
+                  <p className="text-muted-foreground text-sm">1800039295</p>
                 </CardContent>
               </Card>
             </div>
@@ -648,21 +648,21 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-800 text-white py-12">
+      <footer className="bg-card border-t border-border py-12">
         <div className="container mx-auto px-6">
           <div className="text-center">
-            <h3 className="text-2xl font-bold mb-4">ООО "КАДРОВОЕ АГЕНТСТВО ТАЛАНТ"</h3>
-            <p className="text-slate-300 mb-6">
+            <h3 className="text-2xl font-bold mb-4 text-foreground">КАДРОВОЕ АГЕНТСТВО МЕЧТА</h3>
+            <p className="text-muted-foreground mb-6">
               Профессиональный подбор персонала с использованием современных технологий
             </p>
             <div className="flex justify-center space-x-6">
-              <a href="tel:+79011573066" className="text-slate-300 hover:text-white transition-colors">
+              <a href="tel:+79011573066" className="text-muted-foreground hover:text-primary transition-colors">
                 <Icon name="Phone" className="h-5 w-5" />
               </a>
-              <a href="mailto:info@ka-talant.ru" className="text-slate-300 hover:text-white transition-colors">
+              <a href="mailto:hr@ka-drem.ru" className="text-muted-foreground hover:text-primary transition-colors">
                 <Icon name="Mail" className="h-5 w-5" />
               </a>
-              <a href="#" className="text-slate-300 hover:text-white transition-colors">
+              <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
                 <Icon name="MapPin" className="h-5 w-5" />
               </a>
             </div>
