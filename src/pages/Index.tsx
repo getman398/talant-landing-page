@@ -569,7 +569,7 @@ const Index = () => {
                     <Icon name="Phone" className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">Телефон</h3>
-                  <p className="text-muted-foreground text-sm">+79011573066</p>
+                  <p className="text-muted-foreground text-sm">+7 919 903 9250</p>
                 </CardContent>
               </Card>
 
@@ -579,7 +579,7 @@ const Index = () => {
                     <Icon name="Mail" className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">Email</h3>
-                  <p className="text-muted-foreground text-sm">hr@ka-drem.ru</p>
+                  <p className="text-muted-foreground text-sm">hr@ka-dream.ru</p>
                 </CardContent>
               </Card>
 
@@ -599,7 +599,7 @@ const Index = () => {
                     <Icon name="Building2" className="h-6 w-6 text-primary" />
                   </div>
                   <h3 className="font-semibold text-foreground mb-2">ИНН</h3>
-                  <p className="text-muted-foreground text-sm">1800039295</p>
+                  <p className="text-muted-foreground text-sm">6671150809</p>
                 </CardContent>
               </Card>
             </div>
@@ -656,10 +656,10 @@ const Index = () => {
               Профессиональный подбор персонала с использованием современных технологий
             </p>
             <div className="flex justify-center space-x-6">
-              <a href="tel:+79011573066" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="tel:+79199039250" className="text-muted-foreground hover:text-primary transition-colors">
                 <Icon name="Phone" className="h-5 w-5" />
               </a>
-              <a href="mailto:hr@ka-drem.ru" className="text-muted-foreground hover:text-primary transition-colors">
+              <a href="mailto:hr@ka-dream.ru" className="text-muted-foreground hover:text-primary transition-colors">
                 <Icon name="Mail" className="h-5 w-5" />
               </a>
               <a href="#" className="text-muted-foreground hover:text-primary transition-colors">
