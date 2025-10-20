@@ -1,26 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
-import { useState } from "react";
 
 const Index = () => {
-  const [formData, setFormData] = useState({ name: '', phone: '', email: '', message: '' });
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
-  };
-  
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Данные формы:', formData);
-    alert(`Спасибо, ${formData.name}! Мы свяжемся с вами в ближайшее время.`);
-    setFormData({ name: '', phone: '', email: '', message: '' });
-    setIsDialogOpen(false);
   };
 
   return (
@@ -48,61 +32,10 @@ const Index = () => {
                 Контакты
               </button>
             </nav>
-            <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                  <Icon name="MessageSquare" className="mr-2 h-4 w-4" />
-                  Связаться
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-md">
-                <DialogHeader>
-                  <DialogTitle>Свяжитесь с нами</DialogTitle>
-                </DialogHeader>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div>
-                    <Label htmlFor="name">Имя</Label>
-                    <Input
-                      id="name"
-                      value={formData.name}
-                      onChange={(e) => setFormData({...formData, name: e.target.value})}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone">Телефон</Label>
-                    <Input
-                      id="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                      required
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      type="email"
-                      value={formData.email}
-                      onChange={(e) => setFormData({...formData, email: e.target.value})}
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="message">Сообщение</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => setFormData({...formData, message: e.target.value})}
-                      rows={3}
-                    />
-                  </div>
-                  <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                    Отправить
-                  </Button>
-                </form>
-              </DialogContent>
-            </Dialog>
+            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90" onClick={() => window.location.href = '/contacts.html'}>
+              <Icon name="MessageSquare" className="mr-2 h-4 w-4" />
+              Связаться
+            </Button>
           </div>
         </div>
       </header>
@@ -128,7 +61,7 @@ const Index = () => {
                   <Icon name="Sparkles" className="mr-2 h-5 w-5" />
                   Наши услуги
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => scrollToSection('contacts')}>
+                <Button size="lg" variant="outline" onClick={() => window.location.href = '/contacts.html'}>
                   <Icon name="Phone" className="mr-2 h-5 w-5" />
                   Связаться
                 </Button>
@@ -272,35 +205,9 @@ const Index = () => {
                     <span>Поддержка и сопровождение после внедрения</span>
                   </li>
                 </ul>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90">
-                      Рассчитать стоимость
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Рассчитать стоимость: Внедрение CRM</DialogTitle>
-                    </DialogHeader>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="name1">Имя</Label>
-                        <Input id="name1" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone1">Телефон</Label>
-                        <Input id="phone1" type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="message1">Описание задачи</Label>
-                        <Textarea id="message1" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3} />
-                      </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                        Отправить заявку
-                      </Button>
-                    </form>
-                  </DialogContent>
-                </Dialog>
+                <Button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                  Рассчитать стоимость
+                </Button>
               </CardContent>
             </Card>
 
@@ -332,35 +239,9 @@ const Index = () => {
                     <span>Мониторинг и оптимизация работы нейросетей</span>
                   </li>
                 </ul>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90">
-                      Рассчитать стоимость
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Рассчитать стоимость: Интеграция нейросетей</DialogTitle>
-                    </DialogHeader>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="name2">Имя</Label>
-                        <Input id="name2" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone2">Телефон</Label>
-                        <Input id="phone2" type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="message2">Описание задачи</Label>
-                        <Textarea id="message2" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3} />
-                      </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                        Отправить заявку
-                      </Button>
-                    </form>
-                  </DialogContent>
-                </Dialog>
+                <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                  Рассчитать стоимость
+                </Button>
               </CardContent>
             </Card>
 
@@ -392,35 +273,9 @@ const Index = () => {
                     <span>Аналитика эффективности и оптимизация воронок</span>
                   </li>
                 </ul>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90">
-                      Рассчитать стоимость
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Рассчитать стоимость: Построение воронок продаж</DialogTitle>
-                    </DialogHeader>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="name3">Имя</Label>
-                        <Input id="name3" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone3">Телефон</Label>
-                        <Input id="phone3" type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="message3">Описание задачи</Label>
-                        <Textarea id="message3" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3} />
-                      </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                        Отправить заявку
-                      </Button>
-                    </form>
-                  </DialogContent>
-                </Dialog>
+                <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                  Рассчитать стоимость
+                </Button>
               </CardContent>
             </Card>
 
@@ -452,35 +307,9 @@ const Index = () => {
                     <span>Обучение сотрудников работе с автоматизированными системами</span>
                   </li>
                 </ul>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:opacity-90">
-                      Рассчитать стоимость
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Рассчитать стоимость: Автоматизация бизнеса</DialogTitle>
-                    </DialogHeader>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="name4">Имя</Label>
-                        <Input id="name4" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone4">Телефон</Label>
-                        <Input id="phone4" type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="message4">Описание задачи</Label>
-                        <Textarea id="message4" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3} />
-                      </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                        Отправить заявку
-                      </Button>
-                    </form>
-                  </DialogContent>
-                </Dialog>
+                <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                  Рассчитать стоимость
+                </Button>
               </CardContent>
             </Card>
 
@@ -512,35 +341,9 @@ const Index = () => {
                     <span>Мониторинг и улучшение работы бота на основе аналитики</span>
                   </li>
                 </ul>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:opacity-90">
-                      Рассчитать стоимость
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Рассчитать стоимость: Чат-боты с ИИ</DialogTitle>
-                    </DialogHeader>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="name5">Имя</Label>
-                        <Input id="name5" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone5">Телефон</Label>
-                        <Input id="phone5" type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="message5">Описание задачи</Label>
-                        <Textarea id="message5" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3} />
-                      </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                        Отправить заявку
-                      </Button>
-                    </form>
-                  </DialogContent>
-                </Dialog>
+                <Button className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                  Рассчитать стоимость
+                </Button>
               </CardContent>
             </Card>
 
@@ -572,35 +375,9 @@ const Index = () => {
                     <span>Поддержка</span>
                   </li>
                 </ul>
-                <Dialog>
-                  <DialogTrigger asChild>
-                    <Button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:opacity-90">
-                      Рассчитать стоимость
-                    </Button>
-                  </DialogTrigger>
-                  <DialogContent className="max-w-md">
-                    <DialogHeader>
-                      <DialogTitle>Рассчитать стоимость: Настройка API</DialogTitle>
-                    </DialogHeader>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      <div>
-                        <Label htmlFor="name6">Имя</Label>
-                        <Input id="name6" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="phone6">Телефон</Label>
-                        <Input id="phone6" type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                      </div>
-                      <div>
-                        <Label htmlFor="message6">Описание задачи</Label>
-                        <Textarea id="message6" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={3} />
-                      </div>
-                      <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                        Отправить заявку
-                      </Button>
-                    </form>
-                  </DialogContent>
-                </Dialog>
+                <Button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                  Рассчитать стоимость
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -617,10 +394,10 @@ const Index = () => {
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="max-w-4xl mx-auto">
             <Card className="border-2 border-primary/20 shadow-lg">
               <CardContent className="p-8">
-                <div className="mb-6">
+                <div className="mb-8">
                   <div className="flex items-center space-x-3 mb-6">
                     <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
                       <Icon name="Building2" className="h-6 w-6 text-white" />
@@ -632,7 +409,7 @@ const Index = () => {
                   </div>
                 </div>
                 
-                <div className="space-y-4">
+                <div className="grid md:grid-cols-2 gap-6">
                   <div className="flex items-start space-x-4 p-4 bg-secondary rounded-lg">
                     <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
                       <Icon name="User" className="h-5 w-5 text-primary" />
@@ -677,66 +454,6 @@ const Index = () => {
                     </div>
                   </div>
                 </div>
-              </CardContent>
-            </Card>
-
-            <Card className="border-2 border-border shadow-lg">
-              <CardContent className="p-8">
-                <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-foreground mb-2">Напишите нам</h3>
-                  <p className="text-muted-foreground">Оставьте заявку, и мы свяжемся с вами в ближайшее время</p>
-                </div>
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  <div>
-                    <Label htmlFor="name7" className="text-base">Ваше имя</Label>
-                    <Input 
-                      id="name7" 
-                      value={formData.name} 
-                      onChange={(e) => setFormData({...formData, name: e.target.value})} 
-                      className="h-12 text-base"
-                      placeholder="Иван Иванов"
-                      required 
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone7" className="text-base">Телефон</Label>
-                    <Input 
-                      id="phone7" 
-                      type="tel" 
-                      value={formData.phone} 
-                      onChange={(e) => setFormData({...formData, phone: e.target.value})} 
-                      className="h-12 text-base"
-                      placeholder="+7 (999) 123-45-67"
-                      required 
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="email7" className="text-base">Email</Label>
-                    <Input 
-                      id="email7" 
-                      type="email" 
-                      value={formData.email} 
-                      onChange={(e) => setFormData({...formData, email: e.target.value})} 
-                      className="h-12 text-base"
-                      placeholder="example@mail.ru"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="message7" className="text-base">Сообщение</Label>
-                    <Textarea 
-                      id="message7" 
-                      value={formData.message} 
-                      onChange={(e) => setFormData({...formData, message: e.target.value})} 
-                      rows={5}
-                      className="text-base"
-                      placeholder="Расскажите о вашем проекте..."
-                    />
-                  </div>
-                  <Button type="submit" size="lg" className="w-full h-12 text-base bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                    <Icon name="Send" className="mr-2 h-5 w-5" />
-                    Отправить заявку
-                  </Button>
-                </form>
               </CardContent>
             </Card>
           </div>
