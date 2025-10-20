@@ -24,8 +24,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-accent/5">
-      <header className="fixed top-0 left-0 right-0 z-50 bg-card/80 backdrop-blur-lg border-b border-border/50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50/30 to-purple-50/30">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-lg border-b border-border shadow-sm">
         <div className="container mx-auto px-6 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-3">
@@ -165,7 +165,7 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="about" className="py-20 px-6 bg-card/30">
+      <section id="about" className="py-20 px-6 bg-white">
         <div className="container mx-auto max-w-5xl">
           <div className="text-center mb-16">
             <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20 inline-block mb-4">
@@ -607,8 +607,8 @@ const Index = () => {
         </div>
       </section>
 
-      <section id="contacts" className="py-20 px-6 bg-card/30">
-        <div className="container mx-auto max-w-5xl">
+      <section id="contacts" className="py-20 px-6 bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
             <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/20 inline-block mb-4">
               Контакты
@@ -617,98 +617,133 @@ const Index = () => {
             <div className="w-20 h-1 bg-gradient-to-r from-primary to-accent mx-auto"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            <Card className="bg-gradient-to-br from-primary/5 to-transparent border-primary/20">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Building2" className="h-7 w-7 text-primary" />
+          <div className="grid lg:grid-cols-2 gap-8">
+            <Card className="border-2 border-primary/20 shadow-lg">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <div className="flex items-center space-x-3 mb-6">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-lg flex items-center justify-center">
+                      <Icon name="Building2" className="h-6 w-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-foreground">ООО "ПРО-СЕРВИС"</h3>
+                      <p className="text-sm text-muted-foreground">Цифровая трансформация бизнеса</p>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">ИНН</h3>
-                <p className="text-muted-foreground text-sm">1800039320</p>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start space-x-4 p-4 bg-secondary rounded-lg">
+                    <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="User" className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Генеральный директор</p>
+                      <p className="font-semibold text-foreground">Рычков Иван Николаевич</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4 p-4 bg-secondary rounded-lg">
+                    <div className="w-10 h-10 bg-blue-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="Phone" className="h-5 w-5 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Телефон</p>
+                      <a href="tel:+79821299927" className="font-semibold text-foreground hover:text-primary transition-colors">
+                        +7 982 129 99-27
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4 p-4 bg-secondary rounded-lg">
+                    <div className="w-10 h-10 bg-green-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="Mail" className="h-5 w-5 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">Email</p>
+                      <a href="mailto:pro_servic@inbox.ru" className="font-semibold text-foreground hover:text-primary transition-colors break-all">
+                        pro_servic@inbox.ru
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start space-x-4 p-4 bg-secondary rounded-lg">
+                    <div className="w-10 h-10 bg-purple-500/10 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Icon name="FileText" className="h-5 w-5 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm text-muted-foreground mb-1">ИНН</p>
+                      <p className="font-semibold text-foreground">1800039320</p>
+                    </div>
+                  </div>
+                </div>
               </CardContent>
             </Card>
 
-            <Card className="bg-gradient-to-br from-accent/5 to-transparent border-accent/20">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="User" className="h-7 w-7 text-accent" />
+            <Card className="border-2 border-border shadow-lg">
+              <CardContent className="p-8">
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-foreground mb-2">Напишите нам</h3>
+                  <p className="text-muted-foreground">Оставьте заявку, и мы свяжемся с вами в ближайшее время</p>
                 </div>
-                <h3 className="font-semibold text-foreground mb-2">Директор</h3>
-                <p className="text-muted-foreground text-sm">Рычков Иван Николаевич</p>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-blue-500/5 to-transparent border-blue-500/20">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-blue-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Phone" className="h-7 w-7 text-blue-400" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Телефон</h3>
-                <a href="tel:+79821299927" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  +7 982 129 99-27
-                </a>
-              </CardContent>
-            </Card>
-
-            <Card className="bg-gradient-to-br from-green-500/5 to-transparent border-green-500/20">
-              <CardContent className="p-6 text-center">
-                <div className="w-14 h-14 bg-green-500/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Icon name="Mail" className="h-7 w-7 text-green-400" />
-                </div>
-                <h3 className="font-semibold text-foreground mb-2">Email</h3>
-                <a href="mailto:pro_servic@inbox.ru" className="text-muted-foreground text-sm hover:text-primary transition-colors">
-                  pro_servic@inbox.ru
-                </a>
+                <form onSubmit={handleSubmit} className="space-y-5">
+                  <div>
+                    <Label htmlFor="name7" className="text-base">Ваше имя</Label>
+                    <Input 
+                      id="name7" 
+                      value={formData.name} 
+                      onChange={(e) => setFormData({...formData, name: e.target.value})} 
+                      className="h-12 text-base"
+                      placeholder="Иван Иванов"
+                      required 
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="phone7" className="text-base">Телефон</Label>
+                    <Input 
+                      id="phone7" 
+                      type="tel" 
+                      value={formData.phone} 
+                      onChange={(e) => setFormData({...formData, phone: e.target.value})} 
+                      className="h-12 text-base"
+                      placeholder="+7 (999) 123-45-67"
+                      required 
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="email7" className="text-base">Email</Label>
+                    <Input 
+                      id="email7" 
+                      type="email" 
+                      value={formData.email} 
+                      onChange={(e) => setFormData({...formData, email: e.target.value})} 
+                      className="h-12 text-base"
+                      placeholder="example@mail.ru"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="message7" className="text-base">Сообщение</Label>
+                    <Textarea 
+                      id="message7" 
+                      value={formData.message} 
+                      onChange={(e) => setFormData({...formData, message: e.target.value})} 
+                      rows={5}
+                      className="text-base"
+                      placeholder="Расскажите о вашем проекте..."
+                    />
+                  </div>
+                  <Button type="submit" size="lg" className="w-full h-12 text-base bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                    <Icon name="Send" className="mr-2 h-5 w-5" />
+                    Отправить заявку
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </div>
-
-          <Card className="bg-card/50 backdrop-blur-sm border-border/50">
-            <CardContent className="p-8">
-              <div className="text-center mb-6">
-                <h3 className="text-2xl font-bold text-foreground mb-2">ООО "ПРО-СЕРВИС"</h3>
-                <p className="text-muted-foreground">Готовы помочь вашему бизнесу с цифровой трансформацией</p>
-              </div>
-              <Dialog>
-                <DialogTrigger asChild>
-                  <Button size="lg" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                    <Icon name="MessageCircle" className="mr-2 h-5 w-5" />
-                    Написать нам
-                  </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-md">
-                  <DialogHeader>
-                    <DialogTitle>Написать нам</DialogTitle>
-                  </DialogHeader>
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div>
-                      <Label htmlFor="name7">Имя</Label>
-                      <Input id="name7" value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} required />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone7">Телефон</Label>
-                      <Input id="phone7" type="tel" value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} required />
-                    </div>
-                    <div>
-                      <Label htmlFor="email7">Email</Label>
-                      <Input id="email7" type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} />
-                    </div>
-                    <div>
-                      <Label htmlFor="message7">Сообщение</Label>
-                      <Textarea id="message7" value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} rows={4} />
-                    </div>
-                    <Button type="submit" className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90">
-                      Отправить
-                    </Button>
-                  </form>
-                </DialogContent>
-              </Dialog>
-            </CardContent>
-          </Card>
         </div>
       </section>
 
-      <footer className="py-8 px-6 bg-card border-t border-border/50">
+      <footer className="py-8 px-6 bg-white border-t border-border">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center text-center md:text-left space-y-4 md:space-y-0">
             <div className="flex items-center space-x-3">
