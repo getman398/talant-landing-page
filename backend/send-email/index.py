@@ -1,5 +1,6 @@
 import json
 import smtplib
+import os
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
@@ -112,23 +113,53 @@ Email: {email}
                 'body': json.dumps({'error': 'Invalid form type'})
             }
         
+        sender_email = os.environ.get('EMAIL_ADDRESS')
+        sender_password = os.environ.get('EMAIL_PASSWORD')
+        
+        if not sender_email or not sender_password:
+            return {
+                'statusCode': 500,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({
+                    'error': 'Email configuration missing',
+                    'details': 'EMAIL_ADDRESS or EMAIL_PASSWORD not configured'
+                })
+            }
+        
+        smtp_server = 'smtp.mail.ru' if 'mail.ru' in sender_email or 'inbox.ru' in sender_email or 'list.ru' in sender_email or 'bk.ru' in sender_email else 'smtp.yandex.ru'
+        smtp_port = 465
+        
         msg = MIMEMultipart()
-        msg['From'] = 'noreply@pro-service.ru'
+        msg['From'] = sender_email
         msg['To'] = recipient_email
         msg['Subject'] = email_subject
         msg.attach(MIMEText(email_body, 'plain', 'utf-8'))
         
         try:
-            server = smtplib.SMTP('smtp.mail.ru', 587)
-            server.starttls()
+            server = smtplib.SMTP_SSL(smtp_server, smtp_port)
+            server.login(sender_email, sender_password)
+            server.send_message(msg)
             server.quit()
             
-            print(f"Email would be sent to {recipient_email}")
+            print(f"Email successfully sent to {recipient_email}")
             print(f"Subject: {email_subject}")
-            print(f"Body:\n{email_body}")
             
         except Exception as e:
-            print(f"SMTP connection test: {str(e)}")
+            print(f"Failed to send email: {str(e)}")
+            return {
+                'statusCode': 500,
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*'
+                },
+                'body': json.dumps({
+                    'error': 'Failed to send email',
+                    'details': str(e)
+                })
+            }
         
         return {
             'statusCode': 200,
