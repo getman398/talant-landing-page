@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -32,7 +34,7 @@ const Index = () => {
                 Контакты
               </button>
             </nav>
-            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90" onClick={() => window.location.href = '/contacts.html'}>
+            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90" onClick={() => navigate('/contacts')}>
               <Icon name="MessageSquare" className="mr-2 h-4 w-4" />
               Связаться
             </Button>
@@ -61,7 +63,7 @@ const Index = () => {
                   <Icon name="Sparkles" className="mr-2 h-5 w-5" />
                   Наши услуги
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => window.location.href = '/contacts.html'}>
+                <Button size="lg" variant="outline" onClick={() => navigate('/contacts')}>
                   <Icon name="Phone" className="mr-2 h-5 w-5" />
                   Связаться
                 </Button>
