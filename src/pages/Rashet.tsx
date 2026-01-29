@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
+import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 const Rashet = () => {
@@ -19,11 +20,52 @@ const Rashet = () => {
     budget: "",
     description: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Спасибо! Мы получили вашу заявку и скоро свяжемся с вами.");
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/5aa211f8-63e2-45a9-8862-7b4bad878f2e', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'rashet',
+          ...formData
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast.success('Заявка отправлена!', {
+          description: 'Мы свяжемся с вами в ближайшее время'
+        });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          company: "",
+          serviceType: "",
+          budget: "",
+          description: "",
+        });
+      } else {
+        toast.error('Ошибка отправки', {
+          description: 'Попробуйте позже или позвоните нам'
+        });
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      toast.error('Ошибка отправки', {
+        description: 'Проверьте соединение с интернетом'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -193,9 +235,9 @@ const Rashet = () => {
                 </div>
 
                 <div className="flex gap-4">
-                  <Button type="submit" size="lg" className="flex-1 bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                  <Button type="submit" size="lg" className="flex-1 bg-gradient-to-r from-primary to-accent hover:opacity-90" disabled={isSubmitting}>
                     <Icon name="Send" className="mr-2 h-5 w-5" />
-                    Отправить заявку
+                    {isSubmitting ? 'Отправка...' : 'Отправить заявку'}
                   </Button>
                   <Button type="button" size="lg" variant="outline" onClick={() => navigate('/contacts')}>
                     <Icon name="MessageSquare" className="mr-2 h-5 w-5" />

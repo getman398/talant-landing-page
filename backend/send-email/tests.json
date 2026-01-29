@@ -1,0 +1,43 @@
+{
+  "tests": [
+    {
+      "name": "Send contact form email",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "formType": "contact",
+        "name": "Иван Тестов",
+        "email": "test@example.com",
+        "phone": "+7 (999) 123-45-67",
+        "subject": "Тестовый вопрос",
+        "message": "Это тестовое сообщение для проверки работы формы"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true,
+        "message": "string"
+      },
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Send rashet form email",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "formType": "rashet",
+        "name": "Пётр Петров",
+        "email": "petr@example.com",
+        "phone": "+7 (999) 555-55-55",
+        "company": "ООО Тест",
+        "serviceType": "crm",
+        "budget": "100k",
+        "description": "Нужна интеграция CRM системы"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

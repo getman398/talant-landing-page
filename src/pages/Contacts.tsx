@@ -5,6 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import Icon from "@/components/ui/icon";
 import { useState } from "react";
+import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 
 const Contacts = () => {
@@ -16,11 +17,50 @@ const Contacts = () => {
     subject: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Contact form submitted:", formData);
-    alert("Спасибо за ваше сообщение! Мы свяжемся с вами в ближайшее время.");
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('https://functions.poehali.dev/5aa211f8-63e2-45a9-8862-7b4bad878f2e', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          formType: 'contact',
+          ...formData
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        toast.success('Сообщение отправлено!', {
+          description: 'Мы ответим вам в ближайшее время'
+        });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          subject: "",
+          message: "",
+        });
+      } else {
+        toast.error('Ошибка отправки', {
+          description: 'Попробуйте позже или позвоните нам'
+        });
+      }
+    } catch (error) {
+      console.error('Submit error:', error);
+      toast.error('Ошибка отправки', {
+        description: 'Проверьте соединение с интернетом'
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -102,8 +142,8 @@ const Contacts = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a href="mailto:info@pro-service.ru" className="text-muted-foreground hover:text-primary transition-colors">
-                    info@pro-service.ru
+                  <a href="mailto:pro_servic@inbox.ru" className="text-muted-foreground hover:text-primary transition-colors">
+                    pro_servic@inbox.ru
                   </a>
                 </CardContent>
               </Card>
@@ -234,9 +274,9 @@ const Contacts = () => {
                     </div>
 
                     <div className="flex gap-4">
-                      <Button type="submit" size="lg" className="flex-1 bg-gradient-to-r from-primary to-accent hover:opacity-90">
+                      <Button type="submit" size="lg" className="flex-1 bg-gradient-to-r from-primary to-accent hover:opacity-90" disabled={isSubmitting}>
                         <Icon name="Send" className="mr-2 h-5 w-5" />
-                        Отправить сообщение
+                        {isSubmitting ? 'Отправка...' : 'Отправить сообщение'}
                       </Button>
                       <Button type="button" size="lg" variant="outline" onClick={() => navigate('/rashet')}>
                         <Icon name="Calculator" className="mr-2 h-5 w-5" />
