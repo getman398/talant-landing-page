@@ -157,7 +157,7 @@ const Rashet = () => {
                     <Input
                       id="phone"
                       type="tel"
-                      placeholder="+7 (999) 123-45-67"
+                      placeholder="+7 982 124 25-28"
                       value={formData.phone}
                       onChange={(e) => handleChange("phone", e.target.value)}
                       required

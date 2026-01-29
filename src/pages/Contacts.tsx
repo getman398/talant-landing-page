@@ -128,8 +128,8 @@ const Contacts = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <a href="tel:+79991234567" className="text-muted-foreground hover:text-primary transition-colors">
-                    +7 (999) 123-45-67
+                  <a href="tel:+79821242528" className="text-muted-foreground hover:text-primary transition-colors">
+                    +7 982 124 25-28
                   </a>
                 </CardContent>
               </Card>
@@ -234,7 +234,7 @@ const Contacts = () => {
                         <Input
                           id="phone"
                           type="tel"
-                          placeholder="+7 (999) 123-45-67"
+                          placeholder="+7 982 124 25-28"
                           value={formData.phone}
                           onChange={(e) => handleChange("phone", e.target.value)}
                           className="border-border/50"
