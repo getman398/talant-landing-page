@@ -207,7 +207,7 @@ const Index = () => {
                     <span>Поддержка и сопровождение после внедрения</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                <Button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -241,7 +241,7 @@ const Index = () => {
                     <span>Мониторинг и оптимизация работы нейросетей</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -275,7 +275,7 @@ const Index = () => {
                     <span>Аналитика эффективности и оптимизация воронок</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -309,7 +309,7 @@ const Index = () => {
                     <span>Обучение сотрудников работе с автоматизированными системами</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -343,7 +343,7 @@ const Index = () => {
                     <span>Мониторинг и улучшение работы бота на основе аналитики</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                <Button className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -377,7 +377,7 @@ const Index = () => {
                     <span>Поддержка</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:opacity-90" onClick={() => window.location.href = '/rashet.html'}>
+                <Button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
