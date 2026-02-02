@@ -130,7 +130,7 @@ Email: {email}
             }
         
         smtp_server = 'smtp.mail.ru' if 'mail.ru' in sender_email or 'inbox.ru' in sender_email or 'list.ru' in sender_email or 'bk.ru' in sender_email else 'smtp.yandex.ru'
-        smtp_port = 465
+        smtp_port = 587
         
         msg = MIMEMultipart()
         msg['From'] = sender_email
@@ -139,7 +139,8 @@ Email: {email}
         msg.attach(MIMEText(email_body, 'plain', 'utf-8'))
         
         try:
-            server = smtplib.SMTP_SSL(smtp_server, smtp_port)
+            server = smtplib.SMTP(smtp_server, smtp_port)
+            server.starttls()
             server.login(sender_email, sender_password)
             server.send_message(msg)
             server.quit()
