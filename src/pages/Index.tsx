@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import Icon from "@/components/ui/icon";
-import { useNavigate } from "react-router-dom";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
+import { useState } from "react";
 
 const Index = () => {
-  const navigate = useNavigate();
+  const [showPhone, setShowPhone] = useState(false);
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -34,8 +35,8 @@ const Index = () => {
                 Контакты
               </button>
             </nav>
-            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90" onClick={() => navigate('/contacts')}>
-              <Icon name="MessageSquare" className="mr-2 h-4 w-4" />
+            <Button className="bg-gradient-to-r from-primary to-accent hover:opacity-90" onClick={() => setShowPhone(true)}>
+              <Icon name="Phone" className="mr-2 h-4 w-4" />
               Связаться
             </Button>
           </div>
@@ -63,7 +64,7 @@ const Index = () => {
                   <Icon name="Sparkles" className="mr-2 h-5 w-5" />
                   Наши услуги
                 </Button>
-                <Button size="lg" variant="outline" onClick={() => navigate('/contacts')}>
+                <Button size="lg" variant="outline" onClick={() => setShowPhone(true)}>
                   <Icon name="Phone" className="mr-2 h-5 w-5" />
                   Связаться
                 </Button>
@@ -207,7 +208,7 @@ const Index = () => {
                     <span>Поддержка и сопровождение после внедрения</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
+                <Button className="w-full bg-gradient-to-r from-purple-500 to-purple-600 hover:opacity-90" onClick={() => setShowPhone(true)}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -241,7 +242,7 @@ const Index = () => {
                     <span>Мониторинг и оптимизация работы нейросетей</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
+                <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:opacity-90" onClick={() => setShowPhone(true)}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -275,7 +276,7 @@ const Index = () => {
                     <span>Аналитика эффективности и оптимизация воронок</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
+                <Button className="w-full bg-gradient-to-r from-green-500 to-green-600 hover:opacity-90" onClick={() => setShowPhone(true)}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -309,7 +310,7 @@ const Index = () => {
                     <span>Обучение сотрудников работе с автоматизированными системами</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
+                <Button className="w-full bg-gradient-to-r from-orange-500 to-orange-600 hover:opacity-90" onClick={() => setShowPhone(true)}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -343,7 +344,7 @@ const Index = () => {
                     <span>Мониторинг и улучшение работы бота на основе аналитики</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
+                <Button className="w-full bg-gradient-to-r from-cyan-500 to-cyan-600 hover:opacity-90" onClick={() => setShowPhone(true)}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -377,7 +378,7 @@ const Index = () => {
                     <span>Поддержка</span>
                   </li>
                 </ul>
-                <Button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:opacity-90" onClick={() => navigate('/rashet')}>
+                <Button className="w-full bg-gradient-to-r from-pink-500 to-pink-600 hover:opacity-90" onClick={() => setShowPhone(true)}>
                   Рассчитать стоимость
                 </Button>
               </CardContent>
@@ -461,6 +462,35 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <Dialog open={showPhone} onOpenChange={setShowPhone}>
+        <DialogContent className="sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-2xl text-center">Рассчитать стоимость</DialogTitle>
+            <DialogDescription className="text-center text-base pt-2">
+              Для расчёта стоимости позвоните нам по номеру:
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col items-center py-6 space-y-4">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center">
+              <Icon name="Phone" className="h-8 w-8 text-white" />
+            </div>
+            <a
+              href="tel:+79821242528"
+              className="text-3xl font-bold text-primary hover:text-accent transition-colors"
+            >
+              +7 982 124 25-28
+            </a>
+            <p className="text-sm text-muted-foreground">Пн-Пт: 9:00 — 18:00</p>
+          </div>
+          <Button className="w-full bg-gradient-to-r from-primary to-accent hover:opacity-90" asChild>
+            <a href="tel:+79821242528">
+              <Icon name="Phone" className="mr-2 h-4 w-4" />
+              Позвонить
+            </a>
+          </Button>
+        </DialogContent>
+      </Dialog>
 
       <footer className="py-8 px-6 bg-white border-t border-border">
         <div className="container mx-auto">
