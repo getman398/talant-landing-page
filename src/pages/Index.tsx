@@ -387,6 +387,22 @@ const Index = () => {
         </div>
       </section>
 
+      <section className="py-12 px-6 bg-white">
+        <div className="container mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+            Начните свой бизнес со Сбером: зарегистрируйте ИП и откройте счёт.
+          </h2>
+          <a href="https://partners.dasreda.ru/landing/products?partnerID=972f6f4752cde921bbca" target="_blank" rel="noopener noreferrer">
+            <img
+              src="https://cdn.poehali.dev/projects/7cc3c9a8-90ac-412a-9ca5-568117dcdcf8/bucket/62cba8df-80ab-43aa-b526-31e1b366c6c5.png"
+              alt="Сбер Бизнес — Откройте бизнес с нуля"
+              className="w-full rounded-xl shadow-md hover:opacity-95 transition-opacity"
+            />
+          </a>
+          <noscript><img src="https://ad.adriver.ru/cgi-bin/rle.cgi?sid=1&bt=21&ad=835335&pid=4765673&bid=14171205&bn=14171205&exss=&rnd=1978153820" width={1} height={1} /></noscript>
+        </div>
+      </section>
+
       <section id="contacts" className="py-20 px-6 bg-gradient-to-br from-blue-50 to-purple-50">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
